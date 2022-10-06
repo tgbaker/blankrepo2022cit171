@@ -9,9 +9,17 @@ function setphonenumber(){
     phonenumber = $("#phonenumber").val();
 }
 
+const sendText=()=>{
+    $.ajax({
+        type: 'POST',
+        url: 'https://dev.stedi.me/twofactorlogin/'+phonenumber,
+        contentType: "application/text",
+        dataType: "text"
+    });
+}
+
 function setonetimepassword(){
     onetimepassword = $("#onetimepassword").val();
-    var valid=passwordRegEx.exec(onetimepassword);
 }
 
 function setverifypassword(){
@@ -44,12 +52,12 @@ function checkexpiredtoken(token){
 }
 
 function userlogin(){
-    setuserpassword();
-    setusername();
+    setonetimepassword();
+    setphonenumber();
     $.ajax({
         type: 'POST',
-        url: 'https://dev.stedi.me/login',
-        data: JSON.stringify({userName, password}),
+        url: 'https://dev.stedi.me/twofactorlogin',
+        data: JSON.stringify({phoneNumber:phonenumber, oneTimePassword:onetimepassword}),
         success: function(data) {
             window.location.href = "/timer.html#"+data;//add the token to the url
         },

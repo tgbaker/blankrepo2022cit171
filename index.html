@@ -21,8 +21,11 @@
             <input class="stepcount" type="text" id="phonenumber" name="phonenumber" size="25" onchange="setphonenumber()" required >
         </p>
         <p>
+            <input class="btn btn-lg btn-primary" id="loginbtn" type="button" onclick="sendText()" value="Send Text">
+        </p>
+        <p>
             <label class="stepcount" for="onetimepassword">One Time Pass</span></label><br>
-            <input class="stepcount" type="password" id="onetimepassword" name="pwd" size="25" onchange="setuserpassword()" required >
+            <input class="stepcount" type="password" id="onetimepassword" name="pwd" size="25" onchange="setonetimepassword()" required >
         </p>
         <p>
             <input class="btn btn-lg btn-primary" id="loginbtn" type="button" onclick="userlogin()" value="Login">
